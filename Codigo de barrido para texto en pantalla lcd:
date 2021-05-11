@@ -1,0 +1,48 @@
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
+
+
+String Texto_Fila1 = "UPAEP";
+String Texto_fila2 = "Detector Covid-19";
+
+
+void setup()
+{
+  lcd.begin(16, 2);
+  Serial.begin(9600);
+}
+
+
+void loop()
+{
+  int tam_Texto1 = Texto_Fila1.length();
+  
+  for(int i=1; i<=16;i++)
+  {
+    // Limpiamos pantalla
+    lcd.clear();
+
+
+    //Situamos el cursor
+    lcd.setCursor(i, 0);
+
+
+    // Escribimos el texto
+    lcd.print(Texto_Fila1);
+
+
+    // Esperamos
+    delay(50);
+  }
+
+
+  //Para el parpadeo
+  lcd.setCursor(0,0);
+  lcd.print(Texto_Fila1);
+  
+  lcd.setCursor(0,1);
+  lcd.print(Texto_fila2);
+  delay(400);
+  
+  lcd.clear();
+}
